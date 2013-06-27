@@ -1,0 +1,134 @@
+<form name="adminForm" action="" method="post">
+    
+    <input name="boxchecked" type="hidden" value="0" />
+    <input name="submit_option" value="" type="hidden" />
+    <input name="order_field" value="" type="hidden" />
+    <input name="order_dir" value="" type="hidden" />
+    
+<div id="cont_head">
+	<div class="icon_48_category header">Danh sách thành viên</div>
+	<div class="toolbox">
+		<a onclick="if(document.adminForm.boxchecked.value==0)
+        {    alert('Vui lòng chọn ít nhất một phần tử.');}
+        else {  submitbutton('delete')}" href="javascript:void(0);"> <span class="icon_32_delete"></span> Xóa
+		</a>
+		
+			
+		<a href="<?php echo $this->baseUrl() . '/' . MODULE_NAME . '/user/add'; ?>">
+		    <span class="icon_32_new"></span> Thêm mới
+		</a>
+	</div>
+	<!-- .toolbox -->
+</div>
+<!-- #cont_head -->
+
+<div id="cont_body">
+	<div class="filter">
+
+		<input type="text" name="filter_key" value="<?php echo $this->keysearch; ?>" class="textbox"> 
+	    <input type="button" value=" Tìm " onclick="submitbutton('null')" class="btn pointer"> 
+	    <input type="button" value=" Làm lại " onclick="submitbutton('reset')" class="btn pointer">
+	    
+		
+	</div>
+	<!-- .filter -->
+
+	<table class="admin_list">
+	    <tfoot>
+	        <tr>
+	            <td colspan="11">
+	                <?php
+	                echo $this->paginationControl($this->paginator, 'Sliding', 'partials/_pagination_control.phtml');
+	                ?>
+                </td>
+	        </tr>
+	    </tfoot>
+		<thead>
+			<tr>
+				<th width="2%" class="title">#</th>
+				<th width="3%" class="title"><input type="checkbox" name="toggle"
+					value="" onclick="checkAll(<?php echo $this->curPageCount; ?>);"></th>
+				<th class="title">
+				    <a href="javascript:tableOrdering('firstname','<?php echo $this->next_order_dir; ?>');">Tên</a></th>
+			   
+			    <th width="10%" class="title">
+			    <a href="javascript:tableOrdering('username','<?php echo $this->next_order_dir; ?>');">
+			    Username</a></th>
+			    
+			    <th width="10%" class="title">Email</th>
+			    
+			    <th width="10%" class="title">Group</th>
+			    
+			    <th width="5%" nowrap="nowrap" class="title">Kích hoạt</th>
+				
+				<th width="4%">
+				    <a href="javascript:tableOrdering('date_create','<?php echo $this->next_order_dir; ?>');">
+				    Ngày tạo</a></th>
+				<th width="4%">
+				    <a href="javascript:tableOrdering('date_update','<?php echo $this->next_order_dir; ?>');">
+				    Ngày sửa</a></th>
+				
+				<th width="1%" nowrap="nowrap" class="title"><a
+					href="javascript:tableOrdering('id','<?php echo $this->next_order_dir; ?>');"
+					title="Nhấp chuột để sắp xếp theo cột này">ID</a></th>
+			</tr>
+		</thead>
+		<tbody>
+		    <?php
+		    
+		    $i = 1;
+		    foreach ($this->paginator as $item => $val) {
+		        
+		        $iconPublish = ($val['publish'] == 1) ? 'active.png' : 'inactive.png';
+		        $iconPublish = $this->baseUrl('images/') . $iconPublish;
+                
+                $dateCreate = date("d-m-Y h:i:s", (int)($val['date_create']));
+                $dateUpdate = date("d-m-Y h:i:s", (int)($val['date_update']));
+                
+                $pg = new Cp_Model_UserGroup();                
+                $pg = $pg->find($val['user_group_id'])->current();
+                
+		        ?>
+		        <tr class="row0">
+    				<td style="cursor: pointer;" onclick="checkThis('cb<?php echo $i; ?>');">
+    				    <?php echo $i; ?></td>
+    				<td>
+    				    <input type="checkbox" id="cb<?php echo $i; ?>" name="cid[]" 
+    				    value="<?php echo $val['id']; ?>" onclick="isChecked(this.checked);"></td>
+    				    
+    				<td><a href="<?php echo $this->baseUrl('cp/user/edit/id/' . $val['id']); ?>">
+    				    <?php echo $val['firstname']; ?> <?php echo $val['lastname']; ?></a></td>
+    				
+    				<td><?php echo $val['username']; ?></td>
+    				
+    				<td><?php echo $val['email']; ?></td>
+    				    
+    				<td nowrap="nowrap"><?php echo $pg['name']; ?></td>
+    				    
+    				<td class="pointer" align="center" 
+    				onclick="checkOrUncheck('cp', 'user', <?php echo $val['id']; ?>, 
+    				                        'publish', 'publish<?php echo $val['id']; ?>')">
+    				    
+    						<span id="publish<?php echo $val['id']; ?>"> 
+    						<img width="16" height="16"
+    							src="<?php echo $iconPublish; ?>" alt="Đã khóa" />
+    					</span>
+    				</td>
+    				
+    				<td nowrap="nowrap"><?php echo $dateCreate; ?></td>
+    				
+    				<td nowrap="nowrap"><?php echo $dateUpdate; ?></td>
+    				
+    				<td><?php echo $val['id']; ?></td>
+    			</tr>
+		        <?php
+		        $i++;
+		    }
+		    
+		    ?>
+		</tbody>
+	</table>
+	<!-- .admin_list -->
+</div>
+<!-- #cont_body -->
+</form>

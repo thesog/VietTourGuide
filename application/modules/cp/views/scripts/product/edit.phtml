@@ -1,0 +1,120 @@
+<form name="adminForm" action="" method="post" enctype="multipart/form-data">
+
+    <input name="submit_option" value="add" type="hidden" />
+    
+    <div id="cont_head">
+    	<div class="icon_48_category header">Sản phẩm <span>--- Sửa ---</span></div>
+    	<div class="toolbox">
+    		<a onclick="submitbutton('save');" href="javascript:void(0);"> 
+    		    <span class="icon_32_save"></span> Lưu</a>
+    		<a onclick="submitbutton('save_and_new');" href="javascript:void(0);"> 
+    		    <span class="icon_32_apply"></span> Áp dụng</a>		
+    		<a href="<?php echo $this->baseUrl() . '/' . MODULE_NAME . '/product/list'; ?>"> 
+    		<span class="icon_32_cancel"></span> Hủy
+    		</a>
+    	</div>
+    	<!-- .toolbox -->
+    </div>
+    <!-- #cont_head -->
+    
+        
+    <?php
+    
+    if (count($this->message) > 0) {
+        ?><ul class="message"><?php 
+        foreach ($this->message as $message) 
+        {
+            echo '<li>- ' . $message  . '</li>';
+        }
+        ?></ul><?php
+    }
+    ?>
+
+
+    
+    <div id="cont_body">
+        <div class="col w_50">
+            <fieldset class="adminform">
+	            <legend>Thông tin cơ bản</legend>
+	            <?php
+	            echo $this->form_main;
+	            ?>
+	        </fieldset>
+	        
+	        <fieldset class="adminform">
+            	<legend>Mô tả chi tiết</legend>
+            	
+            	<?php 
+            	echo $this->form_product_detail;
+            	?>
+            </fieldset>
+            
+        </div>
+        
+        <div class="col w_50">
+            <div class="itemtabs">
+                <ul class="shadetabs" id="itemtabs">
+        			<li><a class="selected" rel="t1" href="#">Meta</a></li>
+        			<li><a class="" rel="t2" href="#">Hình ảnh</a></li>
+        			<li><a class="" rel="t3" href="#">Tìm kiếm</a></li>
+        			<li><a class="" rel="t4" href="#">Thông tin người đăng</a></li>
+        		</ul>
+        		<div style="border: 1px solid #CCC; padding: 10px;">
+        		    <div class="tabcontent" id="t1" style="display: block;">
+        		        <?php echo $this->form_meta; ?>
+        		    </div>
+        		    
+        		    <div class="tabcontent" id="t2" style="display: block;">
+        		        <div class="cur_imgs">
+        		            <?php
+        		            foreach ($this->cur_images_arr as $img) {
+        		                $img_link = $this->baseUrl(UPLOAD_FOLDER . '/@FILES/' . $img);
+        		                ?>
+        		                <div id="img<?php echo $img; ?>" class="img">
+        		                    <img  src="<?php echo $img_link; ?>" class="cur_img" />
+        		                
+        		                    <span onclick="imgAjaxDel('cp', 'product', '<?php echo $this->id; ?>', '<?php echo $img; ?>', 'img<?php echo $img; ?>')" class="pointer">&nbsp;</span>
+        		                </div>
+        		                <?php 
+        		                
+        		            } 
+        		            ?>       		        
+        		            <div class="cls"></div>    
+        		        </div>
+        		        <?php
+
+        		        
+        		        echo $this->form_images;
+        		         
+        		        ?>
+        		    </div>
+        		    
+        		    <div class="tabcontent" id="t3" style="display: block;">
+        		        <?php        		        
+        		        echo $this->search_item;
+        		        ?>
+        		    </div>
+        		    
+        		    <div class="tabcontent" id="t4" style="display: block;">
+        		       <ul>
+        		           <li><?php echo $this->user['firstname'] . ' ' . $this->user['lastname']; ?></li>
+        		           <li><?php echo $this->user['email']; ?></li>
+        		           <li><?php echo $this->user['phone']; ?></li>
+        		           <li><?php echo $this->user['address']; ?></li>
+        		       </ul>
+        		        
+        		    </div>
+        		</div>
+            </div>    
+        </div>
+        
+        <div class="cls"></div>
+    </div>
+    <script type="text/javascript">
+		var countries=new ddtabcontent("itemtabs")
+		countries.setpersist(true)
+		countries.setselectedClassTarget("link") //"link" or "linkparent"
+		countries.init()
+	</script>
+    <!-- #cont_body -->
+</form>

@@ -1,0 +1,52 @@
+<div class="manu"> 
+
+<?php
+
+if ($this->pageCount) {
+     
+?>
+	<!-- Previous page link -->
+    <?php 
+    
+    if (isset($this->previous)) { 
+    ?>
+        <a href="<?php echo $this->url(array('page' => $this->previous)); ?>"><span class="previous"><span></span>Trang trước</span></a>        
+    <?php 
+    } 
+    else { 
+    ?>
+        <span class="disabled previous"><span></span>Trang trước</span>
+    <?php 
+    } 
+    ?>
+ 
+    <!-- Numbered page links -->
+    <?php foreach ($this->pagesInRange as $page) { 
+        
+        if ($page != $this->current) {
+            
+            ?>
+             <a href="<?php echo $this->url(array('page' => $page)); ?>"><?php echo $page; ?></a>
+            <?php
+        } 
+        else { ?>
+            <span class="current"><?php echo $page; ?></span>
+            <?php 
+        } 
+    } 
+    ?>
+ 
+    <!-- Next page link -->
+    <?php 
+    if (isset($this->next)) { ?>
+        <a href="<?php echo $this->url(array('page' => $this->next)); ?>">Trang sau<span></span></a>        
+        <?php 
+    } 
+    else { ?>
+        <span class="disabled next">Trang sau<span></span></span>
+    <?php 
+    }
+}
+
+?>
+</div>

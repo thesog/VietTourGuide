@@ -1,0 +1,90 @@
+<div class="col w_50">
+	<fieldset class="adminform">
+		<legend>Thông tin cơ bản</legend>
+
+        <table cellspacing="1" class="admintable">
+        <tbody>
+            <tr>
+                <td class="key">Tên</td>
+                <td><?php echo $this->element->name; ?></td></tr>
+
+            <tr>
+                <td class="key">Định danh (Alias)</td>
+                <td><?php echo $this->element->alias; ?></td></tr>
+
+            <tr>
+                <td class="key"><label for="category_id">Nhóm</label></td>
+                <td><?php echo $this->element->parents; ?></td></tr>
+
+            <tr>
+                <td class="key">Kích hoạt</td>
+                <td><?php echo $this->element->publish; ?></td></tr>
+
+			</tbody>
+		</table>
+	</fieldset>
+</div>
+
+
+
+<div class="col w_50">
+	<div class="itemtabs">
+		<ul class="shadetabs" id="itemtabs">
+		    <li><a class="selected" rel="t1" href="javascript:void(0);">Chi tiết</a></li>
+			<li><a rel="t2" href="javascript:void(0);">Meta</a></li>
+		</ul>
+		<div style="border: 1px solid #CCC; padding: 10px;">
+		    <div class="tabcontent" id="t1" style="display: block;">
+                sdfsd		    
+		    </div>
+		    
+			<div class="tabcontent" id="t2" style="display: block;">
+
+				<div class="rowlh">
+					<div class="l">Tiêu đề</div>
+					<div class="r"><?php echo $this->element->meta_title; ?>
+						<span id="count_title"> <script type="text/javascript">                            
+                            document.write(document.getElementById('meta_title').value.length);
+                            </script>
+						</span> / 70
+					</div>
+				</div>
+				<div class="rowlh">
+					<div class="l">Từ khóa</div>
+					<div class="r"><?php echo $this->element->meta_keywords; ?>
+						<span id="count_keywords"> <script type="text/javascript">                            
+                            document.write(document.getElementById('meta_keywords').value.length);
+                            </script>
+						</span> / 160
+					</div>
+				</div>
+				<div class="rowlh">
+					<div class="l">Robots</div>
+					<div class="r"><?php echo $this->element->meta_robots; ?></div>
+				</div>
+				<div class="rowlh">
+					<div class="l">Mô tả</div>
+					<div class="r"><?php echo $this->element->meta_description; ?></div>
+				</div>
+			</div>
+
+
+			<div class="cls"></div>
+
+		</div>
+
+
+		<script type="text/javascript">
+			var countries=new ddtabcontent("itemtabs")
+			countries.setpersist(true)
+			countries.setselectedClassTarget("link") //"link" or "linkparent"
+			countries.init()
+			</script>
+	</div>
+	<!-- .itemtabs -->
+</div>
+
+
+
+
+

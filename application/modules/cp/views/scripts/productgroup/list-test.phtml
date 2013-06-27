@@ -1,0 +1,116 @@
+<?php 
+echo '<pre>';
+//print_r( $this->data);
+echo '</pre>';
+?>
+<div id="cont_body">
+	<div class="filter">
+
+		<input type="text" name="" value="" class="textbox"> 
+	    <input type="button" value=" Tìm " onclick="" class="btn"> 
+	    <input type="button" value=" Làm lại " onclick="" class="btn">
+	    
+		<div class="filter_right">
+			<select name="">
+				<option value="">- Chọn nhóm sản phẩm</option>
+				<option value="">. Chọn loại sản phẩm</option>
+				<option value="">. Chọn loại sản phẩm</option>
+				<option value="">. Chọn loại sản phẩm</option>
+				<option value="">. Chọn loại sản phẩm</option>
+			</select> <select name="">
+				<option value="">- Chọn loại sản phẩm</option>
+				<option value="">. Chọn loại sản phẩm</option>
+				<option value="">. Chọn loại sản phẩm</option>
+				<option value="">. Chọn loại sản phẩm</option>
+				<option value="">. Chọn loại sản phẩm</option>
+			</select>
+		</div>
+		<!-- .filter_right -->
+	</div>
+	<!-- .filter -->
+
+	<table class="admin_list">
+	    <tfoot>
+	        <tr>
+	            <td colspan="10">
+	                <?php
+	                echo $this->paginationControl($this->data, 'Sliding', 'partials/_pagination_control.phtml');
+	                ?>
+                </td>
+	        </tr>
+	    </tfoot>
+		<thead>
+			<tr>
+				<th width="2%" class="title">#</th>
+				<th width="3%" class="title"><input type="checkbox" name="toggle"
+					value="" onclick="checkAll(<?php echo $this->curPageCount; ?>);"></th>
+				<th class="title"><a
+					href="javascript:tableOrdering('name','DESC','');"
+					title="Nhấp chuột để sắp xếp theo cột này">Tên</a></th>
+			    
+				<th width="15%" class="title"><a
+					href="javascript:tableOrdering('username','DESC','');"
+					title="Nhấp chuột để sắp xếp theo cột này">Parents</a></th>
+					
+                <th width="5%" nowrap="nowrap" class="title">
+				<a href="">Kích hoạt</a></th>
+									
+				<th width="5%" nowrap="nowrap" class="title"><a
+					href="javascript:tableOrdering('logged','DESC','');"
+					title="Nhấp chuột để sắp xếp theo cột này">Level</a></th>
+				
+				<th width="5%" nowrap="nowrap" class="title">
+				<a href="">Lft</a></th>
+					
+        		<th width="5%" nowrap="nowrap" class="title">
+				<a href="">Rgt</a></th>
+				
+				
+				
+				<th width="1%" nowrap="nowrap" class="title"><a
+					href="javascript:tableOrdering('id','DESC','');"
+					title="Nhấp chuột để sắp xếp theo cột này">ID</a></th>
+			</tr>
+		</thead>
+		<tbody>
+		    <?php
+
+		    $i = 0;
+		    foreach ($this->data as $item) {
+		        
+		        ?>
+		        <tr class="row0">
+    				<td style="cursor: pointer;" onclick="checkThis('cb<?php echo $i; ?>');"><?php echo $i; ?></td>
+    				<td>
+    				    <input type="checkbox" id="cb<?php echo $i; ?>" name="cid[]" 
+    				    value="<?php echo $item['id']; ?>" onclick="isChecked(this.checked);"></td>
+    				    
+    				<td onclick="checkThis(&#39;cb0&#39;);">
+    				    <span style="padding-left: <?php echo (30 * $item['level']); ?>px">
+    				    <a href="">- <?php echo $item['name']; ?></a>
+    				    </span></td>
+    				
+    				<td><?php echo $item['parents']; ?></td>
+    				<td align="center"><img width="16" height="16" border="0"
+    					src="./layout_files/publish_x.png" alt=""></td>
+    				<td align="center">
+    				    <a href="javascript:void(0);"
+    					onclick="checkOrUncheck(&#39;27&#39;, &#39;published&#39;, &#39;users&#39;, &#39;ah27&#39;)">
+    						<span id="ah27"> <img width="16" height="16" border="0"
+    							src="./layout_files/publish_x.png" alt="Đã khóa">
+    					</span>
+    				</a></td>
+    				<td><?php echo $item['lft']; ?></td>
+    				<td><?php echo $item['rgt']; ?></td>
+    				<td><?php echo $item['id']; ?></td>
+    			</tr>
+		        <?php
+		        $i++;
+		    }
+		   
+        	 
+		    ?>
+		</tbody>
+	</table>
+	<!-- .admin_list -->
+</div>

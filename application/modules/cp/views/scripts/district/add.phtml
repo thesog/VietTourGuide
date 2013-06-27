@@ -1,0 +1,57 @@
+<form name="adminForm" action="" method="post" enctype="multipart/form-data">
+
+    <input name="submit_option" value="add" type="hidden" />
+    
+    <div id="cont_head">
+    	<div class="icon_48_category header">Quận huyện <span>--- Thêm mới ---</span></div>
+    	<div class="toolbox">
+    		<a onclick="submitbutton('save');" href="javascript:void(0);"> 
+    		    <span class="icon_32_save"></span> Lưu</a>
+    		<a onclick="submitbutton('save_and_new');" href="javascript:void(0);"> 
+    		    <span class="icon_32_apply"></span> Lưu và thêm mới</a>		
+    		<a href="<?php echo $this->baseUrl() . '/' . MODULE_NAME . '/district/list'; ?>"> 
+    		<span class="icon_32_cancel"></span> Hủy
+    		</a>
+    	</div>
+    	<!-- .toolbox -->
+    </div>
+    <!-- #cont_head -->
+    
+        
+        <?php
+        
+        if (count($this->message) > 0) {
+            ?><ul class="message"><?php 
+            foreach ($this->message as $message) 
+            {
+                echo '<li>- ' . $message  . '</li>';
+            }
+            ?></ul><?php
+        }
+        ?>
+
+
+    
+    <div id="cont_body">
+        <div class="col w_50">
+            <?php
+            echo $this->form;
+            ?>
+            
+        </div>
+        
+        <div class="col w_50">
+               
+        </div>
+        
+        
+        <div class="cls"></div>
+    </div>
+    <script type="text/javascript">
+		var countries=new ddtabcontent("itemtabs")
+		countries.setpersist(true)
+		countries.setselectedClassTarget("link") //"link" or "linkparent"
+		countries.init()
+	</script>
+    <!-- #cont_body -->
+</form>

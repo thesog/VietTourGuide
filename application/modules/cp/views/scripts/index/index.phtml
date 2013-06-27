@@ -1,0 +1,94 @@
+
+<div id="cont_head">
+	<div class="header">Chào mừng bạn đến với hệ thống quản trị nội dung KunaViet CMS</div>
+</div>
+<!-- #cont_head -->
+    
+
+<div id="cont_body">
+
+	<div class="col w_50">
+		<a href="<?php echo $this->baseUrl() . '/' . MODULE_NAME . '/article/index'; ?>" class="homebuts"> 
+		    <span class="icon_48_article"></span>QL bài viết 
+		</a> 
+		<a href="<?php echo $this->baseUrl() . '/' . MODULE_NAME . '/articlegroup/index'; ?>" class="homebuts"> 
+		    <span class="icon_48_new_group"></span> QL nhóm bài viết
+		</a>
+		<div class="cls"></div>
+
+		<a href="<?php echo $this->baseUrl() . '/' . MODULE_NAME . '/product/index'; ?>" class="homebuts"> 
+		    <span class="icon_48_empty_shopping_cart"></span> QL sản phẩm
+		</a> 
+		<a href="<?php echo $this->baseUrl() . '/' . MODULE_NAME . '/productgroup/index'; ?>" class="homebuts"> 
+		    <span class="icon_48_category"></span> QL nhóm sản phẩm
+		</a>
+
+		<div class="cls"></div>
+		<a href="<?php echo $this->baseUrl() . '/' . MODULE_NAME . '/user/index'; ?>" class="homebuts"> 
+		    <span class="icon_48_user"></span> QL thành viên
+		</a>
+
+	</div>
+
+	<div class="col w_50">
+		<div class="itemtabs">
+			<ul class="shadetabs" id="itemtabs">
+				<li><a class="selected" rel="t1" href="#">Lưu ý khi sử dụng hệ thống</a></li>
+				<li><a rel="t2" href="#" class="">Thông báo</a></li>
+				<li><a rel="t3" href="#" class="">Thống kê</a></li>
+			</ul>
+			<div style="border: 1px solid #CCC; padding: 10px;">
+				<div class="tabcontent" id="t1" style="display: block;">
+
+					<p>Chào mừng đăng nhập hệ thống thành công</p>
+					<p>Để đảm bảo tính an toàn và chính xác của dữ liệu cũng như thông
+						tin thể hiện trên website:</p>
+					<p>1. Không nên để lộ mật khẩu dưới bất kỳ hình thức nào</p>
+					<p>2. Nên cân nhắc trước khi XÓA , CẬP NHẬT dữ liệu</p>
+					<p>3. Nên đăng xuất sau mỗi lần đăng nhập hệ thống bằng cách nhấp
+						lệnh THOÁT</p>
+					<p>4. Nên cập nhật dữ liệu sạch VIRUS</p>
+					<p>5. Nên gia hạn di trì DOMAIN và HOSTING cho website ĐÚNG HẠNG</p>
+					<p>6. Nếu có mọi thắc mắc gì xin vui lòng liên hệ với chúng tôi qua
+						đường dây nóng :</p>
+					<h4>MỌI YÊU CẦU HỖ TRỢ KỸ THUẬT VUI LÒNG LIÊN HỆ:</h4>
+					<p>
+						<strong>Điện thoại: </strong> 0919 050 067<br> <strong>Email:</strong>
+						support@thietkeweb-seo.com<br> <strong>Website: </strong> <a
+							href="http://www.thietkeweb-seo.com"
+							title="CÔNG TY THIẾT KẾ WEBSITE THÂN THIỆN GOOGLE">www.thietkeweb-seo.com</a>
+					</p>
+
+				</div>
+
+
+
+				<div class="tabcontent" id="t2" style="display: none;">
+
+					Hiện tại không có thông báo nào.
+
+					<div class="cls"></div>
+				</div>
+
+				<div class="tabcontent" id="t3" style="display: none;">Chưa có thống
+					kê.</div>
+
+				<div class="cls"></div>
+
+			</div>
+			<!-- search tab -->
+			
+
+			<script type="text/javascript">
+			var countries=new ddtabcontent("itemtabs")
+			countries.setpersist(true)
+			countries.setselectedClassTarget("link") //"link" or "linkparent"
+			countries.init()
+			</script>
+		</div>
+		<!-- .itemtabs -->
+	</div>
+
+	<div class="cls"></div>
+</div>
+<!-- #cont_body -->
