@@ -1,0 +1,60 @@
+<div class="menu">
+	<ul id="nav">
+    	<li><a href="#">TRANG CHỦ<span>&nbsp;</span></a></li>
+        <li><a href="<?php echo $this->baseUrl() .  '/product/list/cid/99'; ?>">BẤT ĐỘNG SẢN BÁN<span>&nbsp;</span></a>
+        	<ul class="sub">
+        	    <?php
+        	    foreach ($this->bds_ban_id as $r) {
+        	        
+        	        $link = $this->baseUrl() .  '/product/list/cid/' . $r['id'];
+        	        ?>
+        	        <li><a href="<?php echo $link; ?>"><?php echo $r['name']; ?><span>&nbsp;</span></a></li>
+        	        <?php
+        	        
+        	    } 
+        	    ?>
+            </ul>
+        </li>
+        <li><a href="<?php echo $this->baseUrl() .  '/product/list/cid/100'; ?>">BẤT ĐỘNG SẢN CHO THUÊ<span>&nbsp;</span></a>
+        	<ul class="sub">
+                <?php
+        	    foreach ($this->bds_mua_id as $r) {
+        	        
+        	        $link = $this->baseUrl() .  '/product/list/cid/' . $r['id'];
+        	        ?>
+        	        <li><a href="<?php echo $link; ?>"><?php echo $r['name']; ?><span>&nbsp;</span></a></li>
+        	        <?php
+        	        
+        	    } 
+        	    ?>
+            </ul>
+        </li>
+        <li class="last"><a href="<?php echo $this->baseUrl() .  '/index/contact'; ?>">LIÊN HỆ<span>&nbsp;</span></a></li>
+    </ul>
+    
+    <script type="text/javascript">
+    var dropdown=new TINY.dropdown.init("dropdown", {id:'nav', active:'menuhover'});
+    </script>
+    
+    <div class="regpanel">
+        <?php
+        $auth = Zend_Auth::getInstance();
+        @$infoUser = $auth->getIdentity();
+        if ($auth->getIdentity() == NULL) {
+            ?>
+            <a href="<?php echo $this->baseUrl() .  '/user/login'; ?>" class="loginbtn"><div>Đăng nhập</div></a>
+            <a href="<?php echo $this->baseUrl() .  '/user/register'; ?>" class="regbtn"><div>Đăng ký</div></a>
+            <?php 
+        } 
+        else {            
+            ?>                      
+            <a href="<?php echo $this->baseUrl() .  '/user/logout'; ?>" class="regbtn"><div>Thoát</div></a>
+            <a href="<?php echo $this->baseUrl() .  '/product/post'; ?>" class="loginbtn"><div>Ký gửi</div></a>
+            <a href="<?php echo $this->baseUrl() .  '/user/update'; ?>" class="regbtn"><div><?php echo 'Chào ' . $infoUser->firstname; ?></div></a>            
+            <?php 
+        }
+        ?>       
+    </div>
+</div>
+	
+<!-- .menu -->

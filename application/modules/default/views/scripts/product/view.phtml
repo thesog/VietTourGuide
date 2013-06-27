@@ -1,0 +1,121 @@
+
+
+<h1><?php echo $this->item['name']; ?></h1>
+
+
+
+<div class="detail_img">
+    
+
+
+<script type="text/javascript">
+$(function() {
+    $('#gallery a').lightBox();
+});
+</script>
+
+
+<div id="gallery">
+    <?php
+    $i = 1;
+    foreach ($this->cur_images_arr as $img) 
+    {
+        $imgclass = ($i == 1) ? 'main_img' : 'thumb';
+        ?>
+        <a href="<?php echo $this->baseUrl('upload/@FILES/')  . $img; ?>" title="<?php echo $this->item['name']; ?>">
+            <img class="<?php echo $imgclass; ?>" src="<?php echo $this->baseUrl('upload/@FILES/')  . $img; ?>" alt="<?php echo $this->item['name']; ?>" />
+        </a>
+        <?php 
+        ++$i;
+    }
+    ?>
+    
+
+</div>
+    
+    <div class="cls"></div>                
+</div>
+<!-- .detail_img -->
+
+<!-- tab content -->
+
+<script type='text/javascript'>
+    $(function() {
+        $("#example-two").organicTabs({
+            "speed": 200
+        });
+    });
+</script>
+
+
+<!-- tab content -->
+
+<script type="text/javascript">
+		
+	//Gia tri khoi tao ban dau khi hien tra ban do
+	var LAT = "10.800195,106.663213";
+	var ZOOM = 17;
+	var MAP_TYPE = google.maps.MapTypeId.ROADMAP;
+	var MAPS_OPTIONS = {
+			zoom: ZOOM,
+			mapTypeId: MAP_TYPE,
+			center: LAT
+	};
+	
+	$(document).ready(function(){	
+		address = "<?php echo $this->pd['address']; ?>";
+		document.getElementById("address").value = address;
+		
+		$('#map_canvas').gmap(MAPS_OPTIONS);
+		//$("#search").click(function(){
+			
+			
+			var geocoderRequest = {
+				address:$("#address").val()
+			};	
+			$('#map_canvas').gmap('clear', 'markers');																				
+			$('#map_canvas').gmap('search',geocoderRequest,function(result,status){						 																	
+			$('#map_canvas').gmap('addMarker', 
+					{	'position': result[0].geometry.location.lat() + "," + result[0].geometry.location.lng(),								 								  
+						'bounds': false
+					},function(map,marker){
+						 map.setCenter(marker.getPosition());
+						 map.setZoom(17);
+					}).click(function() {									
+						$('#map_canvas').gmap('openInfoWindow', {
+									'content': $("#address").val()}, this);
+						});
+																	
+			});
+		//});
+	});
+</script>
+
+    <div id="example-two">
+        <ul class="nav">
+            <li class="nav-one"><a href="#t1" class="current"><span>Thông tin dự án</span></a></li>
+            <li class="nav-two"><a href="#t2"><span>Cấu trúc tiện ích</span></a></li>
+            <li class="nav-two"><a href="#t3"><span>Liên hệ</span></a></li>
+        </ul>
+        <div class="list-wrap">
+            <div id="t1">
+                <?php echo $this->pd['description']; ?>  
+                <h3>Vị trí dự án</h3>
+              	<input type="hidden" name="address" id="address" style="width:300px" />
+				<div id="map_canvas" style="width:600px; min-height:500px;"></div>                  
+            </div>
+        
+            <div id="t2" class="hide" style="position: relative; top: 0px; left: 0px; display: none; ">
+                <?php echo $this->pd['facility']; ?> 
+            </div>
+            
+            <div id="t3" class="hide" style="position: relative; top: 0px; left: 0px; display: none; ">
+                <?php
+                echo  $this->lienhenhanh['b_content'];
+                ?>
+                
+                
+            </div>
+    </div>
+    <!-- END List Wrap --> 
+</div>

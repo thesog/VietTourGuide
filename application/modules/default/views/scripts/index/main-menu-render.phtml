@@ -1,0 +1,30 @@
+<div id="top">
+	<div id="sub_top">
+		<div id="logo">
+			<img src="<?=$this -> template_path ?>images/logo.png" />
+		</div>
+		<div id="main_menu">
+			<div id="main_menu_item"  class="active">
+				<a href="/">Home</a>
+			</div>
+			<div id="main_menu_item">
+				<a href="javascript:void(0)">Festivals</a>
+			</div>
+			<div id="main_menu_item">
+				<a href="javascript:void(0)">Landscapes</a>
+				<ul class="sub_menu" style="display:none">
+					<?php
+					foreach ($this->lanscape_data as $lanscape) {
+						echo '<li><a href="#">' . $lanscape["type_name"] . '</a></li>';
+					}
+					?>
+				</ul>
+			</div>
+
+			<div id="main_menu_item">
+				<a href="/">Guides</a>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>

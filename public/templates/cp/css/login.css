@@ -1,0 +1,83 @@
+/* CSS Document */
+body {
+	margin:0;
+	background-color:#2F2827;
+	color: #74655F;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+#container {
+	width:350px;
+	height:430px;
+	margin:50px auto;
+}
+#container div#login_form {
+	height:337px;
+	width:350px;
+	background: url("../images/bg_login.gif") repeat-x scroll left top #F4F6DD;
+	padding:10px;
+}
+h1 {
+  border-bottom: 1px solid #C2BEB1;
+  color: #74655F;
+  display: block;
+  font-size: 18px;
+  margin-bottom: 10px;
+  margin-top: 0;
+  padding-bottom: 5px;
+  text-align: left;
+  text-transform: capitalize;
+}
+p.error {
+  background: url("../img/icon_error.gif") no-repeat scroll 10px 11px #F6B9B9;
+  border: 1px solid #E18484;
+  color: #C32727;
+  display: block;
+  font-size: 13px;
+  margin: 0;
+  padding: 10px 10px 10px 40px;
+  position: relative;
+}
+#container div#login_form form {
+  text-align: center;
+}
+#container div#login_form label {
+  display: block;
+  margin: 5px auto 0;
+  text-align: left;
+  width: 200px;
+}
+#container div#login_form .inputText {
+  border: 1px solid #AB9B94;
+  color: #2F2827;
+  font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: normal;
+  margin: 5px auto;
+  padding: 5px;
+  width: 190px;
+}
+
+#container div#login_form button.green {
+  background: url("../images/bg_button.gif") repeat-x scroll left top #AECE2F;
+  border: 1px solid #90B306;
+  color: #4D5F04;
+  display: inline-block;
+  font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+  font-size: 13px;
+  height: 31px;
+  line-height: 25px !important;
+  margin-top: 20px;
+  outline: medium none;
+  padding: 0 15px;
+}
+#container div#login_form a {
+  color: #74655F;
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+
+

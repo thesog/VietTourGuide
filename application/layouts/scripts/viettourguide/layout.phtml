@@ -1,0 +1,70 @@
+<?php
+echo $this -> doctype();
+$this -> layout() -> main_menu_render = $this -> action('main-menu-render', 'index');
+$this -> layout() -> place_grid_render = $this -> action('place-grid-render', 'index');
+defined('BASE_PATH') || define('BASE_PATH', $this -> baseUrl() . '/');
+defined('TEMPLATE_PATH') || define('TEMPLATE_PATH', $this -> baseUrl() . '/templates/viettourguide/');
+
+$this -> headLink() -> appendStylesheet(TEMPLATE_PATH . 'css/style.css');
+?>
+<html>
+	<head>
+		<base href="<?php echo $this -> baseUrl(); ?>/" />
+		<?php
+		echo $this -> headTitle();
+		echo $this -> headMeta();
+		echo $this -> headLink();
+		echo $this -> headStyle();
+		echo $this -> headScript();
+		?>
+		<script type="text/javascript" src="<?=TEMPLATE_PATH?>js/jquery.js"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				
+				$("#main_menu a").click(function() {
+					
+					var hidden = $(this).parents("div").children("ul").is(":hidden");
+					
+					$("#main_menu ul").slideUp();
+					if(hidden)
+					{
+						$(this).parents("div").children("ul").slideDown();
+					}else
+					{
+						$(this).parents("div").children("ul").slideUp();
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="page">
+			<div id="sub_page">
+				<?=$this -> layout() -> main_menu_render ?>
+				<div id="banner">
+					<div id="banner_description">
+						<div id="banner_content">
+							Take your own photos
+							<br/>
+							ADVENTURE TIME
+						</div>
+						<div id="banner_button">
+							<a href="#" >Click Here</a>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<?=$this -> layout() -> place_grid_render;?>
+				<div id="center">
+					<?=$this -> layout() -> content; ?>
+				</div>
+				<div class="clear"></div>
+				<div id="footer">
+					<?=$this -> partial('page_modules/footer.phtml'); ?>
+				</div>
+			</div>
+
+		</div>
+	</body>
+</html>
