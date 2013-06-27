@@ -1,0 +1,88 @@
+<?php
+
+/* Khởi tạo các Layout module */
+ 
+$this->layout()->menu = $this->action('menu-render', 'index');
+$this->layout()->searchbox = $this->action('render-search-box', 'index');
+$this->layout()->quickcontact = $this->action('render-quick-contact', 'index');
+$this->layout()->partner = $this->action('render-partner', 'index');
+$this->layout()->tagscloud = $this->action('render-tagscloud', 'index');
+$this->layout()->copyright = $this->action('render-copyright', 'index');
+
+
+defined('BASE_PATH') || define('BASE_PATH', $this->baseUrl() . '/');
+defined('TEMPLATE_PATH') || define('TEMPLATE_PATH', $this->baseUrl() . '/templates/canhosaigon/');
+
+    
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8');
+$this->headLink()->appendStylesheet(TEMPLATE_PATH . 'css/thietkeweb-seo.com.css');
+
+$this->headScript()->appendFile(TEMPLATE_PATH . 'js/tinydropdown.js', 'text/javascript');
+
+$this->headScript()->appendFile($this->baseUrl('/js/configs.js'), 'text/javascript');
+$this->headScript()->appendFile(
+    $this->baseUrl('/jscripts/tiny_mce/tiny_mce.js'),
+    'text/javascript');
+$this->headScript()->appendFile(
+    $this->baseUrl('/jscripts/tiny_mce/configuration_simple.js'),
+    'text/javascript');
+
+echo $this->doctype();
+
+?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<base href="<?php echo $this->baseUrl(); ?>/" />
+<?php
+
+echo $this->headTitle();
+echo $this->headMeta();
+echo $this->headLink();
+echo $this->headStyle();
+echo $this->headScript();
+
+?>
+</head>
+
+<body>
+    
+	<div class="wrap">
+    	<div class="banner">
+        	<img src="<?php echo TEMPLATE_PATH; ?>images/banner.jpg" alt="Căn hộ Saigon" />
+        </div>
+        <!-- .banner -->
+        
+        <?php echo $this->layout()->menu; ?>
+        
+        <div class="body">
+        	<div class="left">
+        	
+            	<?php echo $this->layout()->content; ?>
+                
+            </div>
+            <!-- .left -->
+            
+            <div class="right">
+            	
+                <?php echo $this->layout()->searchbox; ?>
+                
+                <?php echo $this->layout()->quickcontact; ?>
+                
+                <?php echo $this->layout()->partner; ?>
+                
+            </div>
+            <!-- .right -->
+            
+            <div class="cls"></div>
+            
+            <?php echo $this->layout()->tagscloud; ?>
+        
+        	<?php echo $this->layout()->copyright; ?>
+        </div>
+        <!-- .body -->
+        
+        
+    </div>
+    <!-- .wrap -->
+</body>
+</html>

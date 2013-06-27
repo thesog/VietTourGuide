@@ -1,0 +1,143 @@
+<form name="adminForm" action="" method="post">
+    
+    <input type="hidden" value="0" name="boxchecked" />
+    <input name="submit_option" value="" type="hidden" />
+    
+<div id="cont_head">
+	<div class="icon_48_category header">Danh sách nhóm bài viết</div>
+	<div class="toolbox">
+		<a onclick="if(document.adminForm.boxchecked.value==0)
+        {    alert('Vui lòng chọn ít nhất một phần tử.');}
+        else {  submitbutton('delete')}" href="javascript:void(0);"> <span class="icon_32_delete"></span> Xóa
+		</a>
+		
+			
+		<a href="<?php echo $this->baseUrl() . '/' . MODULE_NAME . '/articlegroup/add'; ?>">
+		    <span class="icon_32_new"></span> Thêm mới
+		</a>
+	</div>
+	<!-- .toolbox -->
+</div>
+<!-- #cont_head -->
+
+<div id="cont_body">
+	<div class="filter">
+
+		<input type="text" name="filter_key" value="" class="textbox"> 
+	    <input type="button" value=" Tìm " onclick="submitbutton('null')" class="btn"> 
+	    <input type="button" value=" Làm lại " onclick="submitbutton('reset')" class="btn">
+	    
+		
+	</div>
+	<!-- .filter -->
+
+	<table class="admin_list">
+	    <tfoot>
+	        <tr>
+	            <td colspan="11">
+	                <?php
+	                echo $this->paginationControl($this->paginator, 'Sliding', 'partials/_pagination_control.phtml');
+	                ?>
+                </td>
+	        </tr>
+	    </tfoot>
+		<thead>
+			<tr>
+				<th width="2%" class="title">#</th>
+				<th width="3%" class="title"><input type="checkbox" name="toggle"
+					value="" onclick="checkAll(<?php echo $this->curPageCount; ?>);"></th>
+				<th class="title"><a
+					href="javascript:tableOrdering('name','DESC','');"
+					title="Nhấp chuột để sắp xếp theo cột này">Tên</a></th>
+			    <th class="title"><a
+					href="javascript:tableOrdering('name','DESC','');"
+					title="Nhấp chuột để sắp xếp theo cột này">Alias</a></th>
+				<th width="4%" class="pointer">
+				    <a onclick="submitbutton('ordering');" href="javascript:void(0);">
+				    Thứ tự</a></th>
+				<th width="4%"><a
+					href="javascript:tableOrdering('username','DESC','');"
+					title="Nhấp chuột để sắp xếp theo cột này">Parents</a></th>
+					
+                <th width="5%" nowrap="nowrap" class="title">
+				<a href="">Kích hoạt</a></th>
+									
+				<th width="5%" nowrap="nowrap" class="title"><a
+					href="javascript:tableOrdering('logged','DESC','');"
+					title="Nhấp chuột để sắp xếp theo cột này">Level</a></th>
+				
+				<th width="5%" nowrap="nowrap" class="title">
+				<a href="">Lft</a></th>
+					
+        		<th width="5%" nowrap="nowrap" class="title">
+				<a href="">Rgt</a></th>
+				
+				
+				
+				<th width="1%" nowrap="nowrap" class="title"><a
+					href="javascript:tableOrdering('id','DESC','');"
+					title="Nhấp chuột để sắp xếp theo cột này">ID</a></th>
+			</tr>
+		</thead>
+		<tbody>
+		    <?php
+		    $data = array();
+		    foreach ($this->paginator as $item) {
+		        $data[] = $item;
+		    }
+		    
+		    $modelNested = new VNN_Model_Nested('kn_articlegroup');		    
+		    $orderArr = $modelNested->orderGroup($data);
+		    
+		    $i = 0;
+		    foreach ($this->paginator as $item => $val) {
+		        $iconPublish = ($val['publish'] == 1) ? 'active.png' : 'inactive.png';
+		        $iconPublish = $this->baseUrl('images/') . $iconPublish;		        
+		        
+		        $orderName = 'ordering[' . $val['lft'] . ']';
+		        $orderValue = $modelNested->getNodeOrdering($val['parents'], $val['lft']); 
+		        $ordering = '<input type="text" name="' . $orderName . '" id="' . $orderName . '" 
+		                     value="' . $orderValue . '" style="text-align:center; width:40px;" />';
+		        
+		        ?>
+		        <tr class="row0">
+    				<td style="cursor: pointer;" onclick="checkThis('cb<?php echo $i; ?>');"><?php echo $i; ?></td>
+    				<td>
+    				    <input type="checkbox" id="cb<?php echo $i; ?>" name="cid[]" 
+    				    value="<?php echo $val['id']; ?>" onclick="isChecked(this.checked);"></td>
+    				    
+    				<td>
+    				    <span style="padding-left: <?php echo (30 * $val['level']); ?>px">
+    				    <a href="<?php echo $this->baseUrl('cp/articlegroup/edit/id/' . $val['id']); ?>">
+    				    <?php echo $val['name']; ?></a></span></td>
+    				<td><?php echo $val['alias']; ?></td>
+    				<td><?php echo $ordering; ?></td>
+    				<td align="center"><?php echo $val['parents']; ?></td>
+    				<td class="pointer" align="center" 
+    				onclick="checkOrUncheck('cp', 'articlegroup', <?php echo $val['id']; ?>, 
+    				                        'publish', 'publish<?php echo $val['id']; ?>')">
+    				    <a href="javascript:void(0);"
+    					>
+    						<span id="publish<?php echo $val['id']; ?>"> 
+    						<img width="16" height="16" border="0"
+    							src="<?php echo $iconPublish; ?>" alt="Đã khóa">
+    					</span>
+    				</a></td>
+    				<td align="center"><?php echo $val['level']; ?></td>
+    				
+    				<td><?php echo $val['lft']; ?></td>
+    				<td><?php echo $val['rgt']; ?></td>
+    				<td><?php echo $val['id']; ?></td>
+    			</tr>
+		        <?php
+		        $i++;
+		    }
+		    
+        	 
+		    ?>
+		</tbody>
+	</table>
+	<!-- .admin_list -->
+</div>
+<!-- #cont_body -->
+</form>

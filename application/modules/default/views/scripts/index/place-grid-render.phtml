@@ -1,0 +1,21 @@
+<div id="places_grid">
+	<div id="sub_places_grid">
+		<div class="title">
+			Famous places
+		</div>
+		<div id="sub_places_grid_1">
+		<?php foreach ($this->place_grid_data as $place) {?>
+			<div class="places_item">
+				<div id="image"><img width=79 height=48 src="<?= IMAGE_PLACE_FOLDER . $place['image_path']?>" />
+				</div>
+				<div id="title">
+					<?=$place["place_name"]?>
+				</div>
+			</div>
+			<?php }?>
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+	<div id="green_ground_bt"></div>
+</div>

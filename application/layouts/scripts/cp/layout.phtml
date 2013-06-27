@@ -1,0 +1,131 @@
+<?php
+
+echo $this->doctype();
+
+
+defined('BASE_PATH') || define('BASE_PATH', $this->baseUrl() . '/cp/');
+defined('TEMPLATE_PATH') || define('TEMPLATE_PATH', $this->baseUrl() . '/templates/cp/');
+
+    
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8');
+$this->headLink()->appendStylesheet(TEMPLATE_PATH . 'css/layout.css');
+$this->headLink()->appendStylesheet(TEMPLATE_PATH . 'css/tabcontent.css');
+$this->headScript()->appendFile($this->baseUrl('/js/configs.js'), 'text/javascript');
+$this->headScript()->appendFile(TEMPLATE_PATH . 'js/tabcontent.js', 'text/javascript');
+$this->headScript()->appendFile(TEMPLATE_PATH . 'js/common.js', 'text/javascript');
+
+$this->headScript()->appendFile(
+    $this->baseUrl('/jscripts/tiny_mce/tiny_mce.js'),
+    'text/javascript');
+$this->headScript()->appendFile(
+    $this->baseUrl('/jscripts/tiny_mce/configuration_normal.js'),
+    'text/javascript');    
+?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<?php
+
+echo $this->headTitle();
+echo $this->headMeta();
+echo $this->headLink();
+echo $this->headStyle();
+echo $this->headScript();
+
+?>
+</head>
+
+<body>
+	<div id="border_top">
+		<span class="cms_title">KunaViet CMS</span> <span class="cms_version">
+		    KunaViet CMS Version 1.0 ..:.. Chào
+		    <?php
+		    $auth = Zend_Auth::getInstance();
+		    $infoUser = $auth->getIdentity();
+		    
+		    ?> 
+		    <a href="" title=""><?php echo $infoUser->firstname; ?></a>
+		    ..:..
+		    <a href="<?php echo BASE_PATH . 'user/logout'; ?>">Thoát</a>
+		</span>
+	</div>
+	<!-- #border_top -->
+
+	<ul id="nav">
+		<li class="top">
+	        <a class="top_link" href="<?php echo BASE_PATH; ?>">
+                <span class="down">Trang chủ</span>
+            </a>
+			<ul class="sub">
+                <li>
+                    <a href="<?php echo BASE_PATH . 'user/index'; ?>">Quản lý thành viên</a></li>
+				<li>
+				    <a href="<?php echo BASE_PATH . 'user/logout'; ?>">Thoát</a></li>
+			</ul></li>
+        
+		<li class="top">
+		    <a class="top_link" id="products" href="<?php echo BASE_PATH . 'product/index'; ?>"> 
+		        <span class="down">Sản phẩm</span></a>
+			<ul class="sub">
+				<li><a href="<?php echo BASE_PATH . 'product/add'; ?>">Thêm mới</a></li>
+				<li><a href="<?php echo BASE_PATH . 'product/index'; ?>">Danh sách SP</a></li>
+				<li class="line"></li>
+				<li class="mid">
+				    <a class="fly" href="<?php echo BASE_PATH . 'productgroup/index'; ?>">
+				    Nhóm sản phẩm</a>
+					<ul>
+						<li><a href="<?php echo BASE_PATH . 'productgroup/add'; ?>">Thêm mới</a></li>
+					</ul></li>
+			</ul></li>
+
+		<li class="top">
+		    <a class="top_link" id="products" href="<?php echo BASE_PATH . 'article/index'; ?>"> 
+		        <span class="down">Bài viết</span></a>
+			<ul class="sub">
+				<li><a href="<?php echo BASE_PATH . 'article/add'; ?>">Thêm mới</a></li>
+				<li><a href="<?php echo BASE_PATH . 'article/index'; ?>">Danh sách bài viết</a></li>
+				<li class="line"></li>
+				<li class="mid">
+				    <a class="fly" href="<?php echo BASE_PATH . 'articlegroup/index'; ?>">Nhóm bài viết</a>
+					<ul>
+						<li>
+						    <a href="<?php echo BASE_PATH . 'articlegroup/add'; ?>">Thêm mới</a></li>
+					</ul></li>
+			</ul></li>
+
+		<li class="top"><a class="top_link"
+			href="#"><span class="down">Quản lý tìm kiếm</span></a>
+			<ul class="sub">
+				<li><a href="<?php echo BASE_PATH . 'district/list'; ?>" class="fly">Quận huyện</a>
+					<ul>
+						<li><a href="<?php echo BASE_PATH . 'district/add'; ?>">Thêm mới</a></li>
+					</ul></li>
+				<li><a href="<?php echo BASE_PATH . 'price-range/list'; ?>" class="fly">Khoản giá</a>
+					<ul>
+						<li><a href="<?php echo BASE_PATH . 'price-range/add'; ?>">Thêm mới</a></li>
+					</ul></li>
+				<li><a href="<?php echo BASE_PATH . 'area-range/list'; ?>" class="fly">Khoản diện tích</a>
+					<ul>
+						<li><a href="<?php echo BASE_PATH . 'area-range/add'; ?>">Thêm mới</a></li>
+					</ul></li>
+				<li class="line"></li>
+				
+			</ul></li>
+	</ul>
+	<!-- #nav -->
+
+	<div id="content_box">
+        <?php echo $this->layout()->content; ?>
+	</div>
+	<!-- #content_box -->
+
+	<div id="bottom_border">
+		<div id="br_corner"></div>
+		<div id="bl_corner"></div>
+	</div>
+	<!-- #bottom_border -->
+
+	<div class="copyright">KunaViet CMS ®. Phần mền bản quyền của KunaViet</div>
+	<!-- .copyright -->
+</body>
+</html>
