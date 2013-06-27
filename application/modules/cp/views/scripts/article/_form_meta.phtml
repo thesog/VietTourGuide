@@ -1,0 +1,26 @@
+<div class="rowlh">
+	<div class="l">Tiêu đề</div>
+	<div class="r"><?php echo $this->element->meta_title; ?>
+		<span id="count_title"> <script type="text/javascript">                            
+            document.write(document.getElementById('meta_title').value.length);
+            </script>
+		</span> / 70
+	</div>
+</div>
+<div class="rowlh">
+	<div class="l">Từ khóa</div>
+	<div class="r"><?php echo $this->element->meta_keywords; ?>
+		<span id="count_keywords"> <script type="text/javascript">                            
+            document.write(document.getElementById('meta_keywords').value.length);
+            </script>
+		</span> / 160
+	</div>
+</div>
+<div class="rowlh">
+	<div class="l">Robots</div>
+	<div class="r"><?php echo $this->element->meta_robots; ?></div>
+</div>
+<div class="rowlh">
+	<div class="l">Mô tả</div>
+	<div class="r"><?php echo $this->element->meta_description; ?></div>
+</div>

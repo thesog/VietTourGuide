@@ -1,0 +1,59 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>Đăng nhập hệ thống</title>
+
+<link href="<?php echo $this->baseUrl() . '/templates/cp/css/login.css'; ?>"
+	rel="stylesheet" type="text/css" />
+</head>
+
+
+
+<body onload="document.getElementById('username').focus()">
+
+	<div id="container">
+
+		<div id="login_slogan">
+
+			<img src="<?php echo $this->baseUrl() . '/templates/cp/images/login_slogan.gif'; ?>"
+				alt="BGS Login Panel" title="BGS CMS" />
+		</div>
+
+		<!-- END #login_slogan -->
+
+
+
+		<div id="login_form">
+
+			<h1>Trang quản trị nội dung</h1>
+
+			<?php
+			if ($this->loginMessage != '') {
+				echo '<p class="error">' . $this->loginMessage . '</p>';
+			}
+			?>
+			
+			<form name="adminForm" action="" method="post" enctype="multipart/form-data">
+
+				<?php
+                echo $this->form;
+                ?>
+
+			</form>
+
+		</div>
+
+		<!-- END #login_form -->
+	</div>
+
+	<!-- END #containter -->
+
+</body>
+
+</html>
