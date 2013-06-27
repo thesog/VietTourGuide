@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Google Maps</title>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js" ></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&hl=vi-VN"></script>
+<script type="text/javascript" src="../plugins/jquery.ui.map.js"></script>
+<script type="text/javascript" src="../plugins/jquery.ui.map.services.js"></script>
+<script type="text/javascript">
+	
+	//Gia tri khoi tao ban dau khi hien tra ban do
+	var LAT = "10.800195,106.663213";
+	var ZOOM = 17;
+	var MAP_TYPE = google.maps.MapTypeId.ROADMAP;
+	var MAPS_OPTIONS = {
+	   		zoom: ZOOM,
+	   		mapTypeId: MAP_TYPE,
+	   		center: LAT
+	};
+	
+	$(document).ready(function(){	
+		address = "108 Nhat Chi Mai";
+		document.getElementById("address").value = address;
+		
+		$('#map_canvas').gmap(MAPS_OPTIONS);
+		//$("#search").click(function(){
+			
+			
+			var geocoderRequest = {
+				address:$("#address").val()
+			};	
+			$('#map_canvas').gmap('clear', 'markers');																				
+			$('#map_canvas').gmap('search',geocoderRequest,function(result,status){						 																	
+			$('#map_canvas').gmap('addMarker', 
+					{	'position': result[0].geometry.location.lat() + "," + result[0].geometry.location.lng(),								 								  
+				 		'bounds': false
+				 	},function(map,marker){
+						 map.setCenter(marker.getPosition());
+						 map.setZoom(17);
+				 	}).click(function() {									
+						$('#map_canvas').gmap('openInfoWindow', {
+									'content': $("#address").val()}, this);
+						});
+																	
+			});
+		//});
+	});
+</script>
+
+
+</head>
+
+<body>
+
+<input type="hidden" name="address" id="address" style="width:300px" />
+<div id="map_canvas" style="height:480px;"></div>
+</body>
+</html>

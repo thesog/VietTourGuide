@@ -1,0 +1,9 @@
+
+<?php 
+$iconPublish = ($this->result == 1) ? 'active.png' : 'inactive.png';
+$altPublish = ($this->result == 1) ? 'Đã kích hoạt' : 'Đã khóa';
+$iconPublish = $this->baseUrl('images/') . $iconPublish;
+ 
+?>
+<img width="16" height="16" border="0"
+    							src="<?php echo $iconPublish; ?>" alt="<?php echo $altPublish; ?>">

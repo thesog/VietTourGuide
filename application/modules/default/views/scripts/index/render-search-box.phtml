@@ -1,0 +1,60 @@
+<div class="searchbox">
+	<div class="t"></div>
+    
+    <div class="m">        
+    	<form action="product/search" method="post">
+        	<input type="text" name="key" class="searchinput" />
+            
+            <select name="product_group_id">
+            	
+            	<?php
+            	foreach ($this->product_group as $r) {
+            	    $temp = '';
+            	    for ($i = 1; $i <= $r['level']; ++ $i) {
+            	        $temp .= '.-- ';
+            	    }
+            	    ?>
+            	    <option value="<?php echo $r['id']; ?>"><?php echo $temp . $r['name']; ?></option>
+            	    <?php 
+            	} 
+            	?>
+            </select>
+            
+            <select name="district_id">
+            	<option value="">Chọn quận / huyện</option>
+            	<?php
+            	foreach ($this->districts as $r) {
+            	    ?>
+            	    <option value="<?php echo $r['id']; ?>"><?php echo $r['name']; ?></option>
+            	    <?php 
+            	} 
+            	?>
+            </select>
+            
+            <select name="pricerange_id">
+            	<option value="">Chọn khoản giá</option>
+            	<?php
+            	foreach ($this->priceranges as $r) {
+            	    ?>
+            	    <option value="<?php echo $r['id']; ?>"><?php echo $r['name']; ?></option>
+            	    <?php 
+            	} 
+            	?>
+            </select>
+            
+            <select name="arearange_id">
+            	<option value="">Chọn khoản diện tích</option>
+            	<?php
+            	foreach ($this->arearanges as $r) {
+            	    ?>
+            	    <option value="<?php echo $r['id']; ?>"><?php echo $r['name']; ?></option>
+            	    <?php 
+            	} 
+            	?>
+            </select>
+            
+            <input type="submit" value="" class="btn"  />
+        </form>        
+    </div>
+</div>
+<!-- .searchbox -->

@@ -1,0 +1,14 @@
+<h1>ĐĂNG KÝ TÀI KHOẢN</h1>
+<ul class="msg">
+<?php
+
+if (is_array($this->message)) {
+    foreach ($this->message as $msg) {
+        ?>
+        <li>- <?php echo $msg; ?></li>
+        <?php
+    } 
+}
+?>
+</ul>
+<?php echo $this->form_register; ?>

@@ -1,0 +1,41 @@
+<h1>Đăng tin ký gửi</h1>
+<?php
+if (is_array($this->message)) {
+    foreach ($this->message as $msg) {
+        ?>
+        <li>- <?php echo $msg; ?></li>
+        <?php
+    } 
+}
+?>
+<form name="adminForm" action="" method="post" enctype="multipart/form-data">
+<div class="userpost">
+    <?php 
+    echo $this->form_main;
+    echo $this->form_product_detail;
+    ?>
+
+    <?php
+    if ($this->form_images) {
+        ?>
+        <div class="row">
+            <div class="l">Hình ảnh</div>
+            <div class="r"><?php echo $this->form_images; ?></div>
+        </div>
+        <div class="row">
+            <div class="l">&nbsp;</div>
+            <div class="r"><br /></div>
+        </div>
+        <div class="row">
+            <div class="l">&nbsp;</div>
+            <div class="r">
+                <input type="submit" name="submit" value=" Đăng tin " />
+                <input type="reset" value=" Làm lại " />
+            </div>        
+        </div>
+        <?php          
+    } 
+    ?>
+    
+</div>
+</form>

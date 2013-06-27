@@ -1,0 +1,64 @@
+<div class="list">
+<?php 
+
+
+$vnnHelpers = new VNN_Helpers();
+
+foreach ($this->paginator as $item => $val) {
+    
+    $pd = new Cp_Model_ProductDetail();   
+    $pd = $pd->fetchRow('product_id = ' . $val['id']);
+    
+    $pg = new Cp_Model_Productgroup();
+    $pg = $pg->find($val['product_group_id'])->current();
+    
+    $district = new Cp_Model_District();
+    $district = $district->find($val['district_id'])->current();
+    
+    
+    $cur_images_arr = $vnnHelpers->toImgArr($val['image_arr']);
+    $cur_images_arr = isset($cur_images_arr[0]) ? $cur_images_arr[0] : 'noimg.jpg';
+    
+    $link = $this->baseUrl('/product/view/id/' . $val['id']);
+    
+    $pgname = ($pg['name'] != '') ? '<span>' . $pg['name'] . '</span>' : '';
+    
+    
+    $district_link = ($this->district != '') ?  $this->url() 
+    :  $this->url() . '/district/' . $district['id'];
+    
+  
+    ?>
+    <div class="item">
+        <a href="<?php echo $link; ?>" title="<?php echo $val['name']; ?>">
+    	<img src="<?php echo $this->baseUrl('/upload/@FILES/') . $cur_images_arr; ?>" /></a>
+        <h2><a href="<?php echo $link; ?>" title="<?php echo $val['name']; ?>">
+            <?php echo $val['name']; ?></a></h2>
+            <?php echo $pd['intro']; ?>
+        <div class="bottom">
+            <span>Mã tin: <?php echo $val['id']; ?></span>
+            <?php 
+            if (!($this->district != '')) {
+                ?>
+                | <a href="<?php echo $district_link; ?>"><span><?php echo $district['name']; ?></span></a>
+                <?php     
+            }                 
+            ?>
+        </div>
+        
+        <div class="pricebox">
+        	<p style="font-size:20px; text-align:center;">Giá</p>
+            <p style="color:#f00; text-align:center; font-size:17px;"><?php echo $pd['price']; ?></p>
+        </div>
+    	<div class="bottom_line">&nbsp;</div>	
+    </div>
+    <?php
+    
+}
+?>
+</div>
+
+
+<?php
+echo $this->paginationControl($this->paginator, 'Sliding', 'partials/_pagination_control.phtml');
+?>

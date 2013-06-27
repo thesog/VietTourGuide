@@ -1,0 +1,47 @@
+<form name="adminForm" action="" method="post">
+
+    <input name="submit_option" value="add" type="hidden" />
+    
+    <div id="cont_head">
+    	<div class="icon_48_category header">Nhóm sản phẩm <span>--- Thêm mới ---</span></div>
+    	<div class="toolbox">
+    		<a onclick="submitbutton('save');" href="javascript:void(0);"> 
+    		    <span class="icon_32_save"></span> Lưu</a>
+    		<a onclick="submitbutton('save_and_new');" href="javascript:void(0);"> 
+    		    <span class="icon_32_apply"></span> Lưu và thêm mới</a>		
+    		<a href="<?php echo $this->baseUrl() . '/' . MODULE_NAME . '/productgroup/list'; ?>"> 
+    		<span class="icon_32_cancel"></span> Hủy
+    		</a>
+    	</div>
+    	<!-- .toolbox -->
+    </div>
+    <!-- #cont_head -->
+    
+        
+        <?php
+        
+        if (count($this->message) > 0) {
+            ?><ul class="message"><?php 
+            foreach ($this->message as $message) 
+            {
+                echo '<li>- ' . $message  . '</li>';
+            }
+            ?></ul><?php
+        }
+        ?>
+    
+    
+    
+
+
+    
+    <div id="cont_body">
+        <?php
+         
+        echo $this->form;
+        
+        ?>
+        <div class="cls"></div>
+    </div>
+    <!-- #cont_body -->
+</form>

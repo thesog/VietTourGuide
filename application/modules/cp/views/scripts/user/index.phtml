@@ -1,0 +1,159 @@
+<div id="cont_head">
+	<div class="icon_48_user header">Danh sách thành viên</div>
+	<div class="toolbox">
+		<a href="" title=""> <span class="icon_32_delete"></span> Xóa
+		</a> <a href="" title=""> <span class="icon_32_new"></span> Thêm mới
+		</a>
+	</div>
+	<!-- .toolbox -->
+</div>
+<!-- #cont_head -->
+
+
+
+
+<div id="cont_body">
+	<div class="filter">
+
+		<input type="text" name="" value="" class="textbox"> <input
+			type="button" value=" Tìm " onclick="" class="btn"> <input
+			type="button" value=" Làm lại " onclick="" class="btn">
+		<div class="filter_right">
+			<select name="">
+				<option value="">- Chọn nhóm sản phẩm</option>
+				<option value="">. Chọn loại sản phẩm</option>
+				<option value="">. Chọn loại sản phẩm</option>
+				<option value="">. Chọn loại sản phẩm</option>
+				<option value="">. Chọn loại sản phẩm</option>
+			</select> <select name="">
+				<option value="">- Chọn loại sản phẩm</option>
+				<option value="">. Chọn loại sản phẩm</option>
+				<option value="">. Chọn loại sản phẩm</option>
+				<option value="">. Chọn loại sản phẩm</option>
+				<option value="">. Chọn loại sản phẩm</option>
+			</select>
+		</div>
+		<!-- .filter_right -->
+	</div>
+	<!-- .filter -->
+
+	<table class="admin_list">
+		<thead>
+			<tr>
+				<th width="2%" class="title">#</th>
+				<th width="3%" class="title"><input type="checkbox" name="toggle"
+					value="" onclick="checkAll(15);"></th>
+				<th class="title"><a
+					href="javascript:tableOrdering('name','DESC','');"
+					title="Nhấp chuột để sắp xếp theo cột này">Tên</a></th>
+				<th width="15%" class="title"><a
+					href="javascript:tableOrdering('username','DESC','');"
+					title="Nhấp chuột để sắp xếp theo cột này">Tên đăng nhập</a></th>
+				<th width="5%" nowrap="nowrap" class="title"><a
+					href="javascript:tableOrdering('logged','DESC','');"
+					title="Nhấp chuột để sắp xếp theo cột này"> Đã đăng nhập </a></th>
+				<th width="5%" nowrap="nowrap" class="title"><a
+					href="javascript:tableOrdering('published','DESC','');"
+					title="Nhấp chuột để sắp xếp theo cột này">Đã được bật</a></th>
+				<th width="15%" class="title">Nhóm</th>
+				<th width="15%" class="title"><a
+					href="javascript:tableOrdering('email','DESC','');"
+					title="Nhấp chuột để sắp xếp theo cột này">E-Mail</a></th>
+				<th width="10%" class="title"><a
+					href="javascript:tableOrdering('lastvisit_date','DESC','');"
+					title="Nhấp chuột để sắp xếp theo cột này">Lần truy cập cuối</a></th>
+				<th width="1%" nowrap="nowrap" class="title"><a
+					href="javascript:tableOrdering('id','DESC','');"
+					title="Nhấp chuột để sắp xếp theo cột này">ID</a></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="row0">
+				<td style="cursor: pointer;" onclick="checkThis(&#39;cb0&#39;);">1</td>
+				<td><input type="checkbox" id="cb0" name="cid[]" value="27"
+					onclick="isChecked(this.checked);"></td>
+				<td onclick="checkThis(&#39;cb0&#39;);"><a
+					href="http://localhost/essay.kunaviet/TEMPLATE_Admin/users/update/27">
+						abc110</a></td>
+				<td>abc110</td>
+				<td align="center"><img width="16" height="16" border="0"
+					src="./layout_files/publish_x.png" alt=""></td>
+				<td align="center"><a href="javascript:void(0);"
+					onclick="checkOrUncheck(&#39;27&#39;, &#39;published&#39;, &#39;users&#39;, &#39;ah27&#39;)">
+						<span id="ah27"> <img width="16" height="16" border="0"
+							src="./layout_files/publish_x.png" alt="Đã khóa">
+					</span>
+				</a></td>
+				<td>Register</td>
+				<td><a href="mailto:abc110@abc110.abc110"> abc110@abc110.abc110</a></td>
+				<td nowrap="nowrap">30-11--0001 00:00:00</td>
+				<td>27</td>
+			</tr>
+			<tr class="row0">
+				<td style="cursor: pointer;" onclick="checkThis(&#39;cb0&#39;);">1</td>
+				<td><input type="checkbox" id="cb0" name="cid[]" value="27"
+					onclick="isChecked(this.checked);"></td>
+				<td onclick="checkThis(&#39;cb0&#39;);"><a
+					href="http://localhost/essay.kunaviet/TEMPLATE_Admin/users/update/27">
+						abc110</a></td>
+				<td>abc110</td>
+				<td align="center"><img width="16" height="16" border="0"
+					src="./layout_files/publish_x.png" alt=""></td>
+				<td align="center"><a href="javascript:void(0);"
+					onclick="checkOrUncheck(&#39;27&#39;, &#39;published&#39;, &#39;users&#39;, &#39;ah27&#39;)">
+						<span id="ah27"> <img width="16" height="16" border="0"
+							src="./layout_files/publish_x.png" alt="Đã khóa">
+					</span>
+				</a></td>
+				<td>Register</td>
+				<td><a href="mailto:abc110@abc110.abc110"> abc110@abc110.abc110</a></td>
+				<td nowrap="nowrap">30-11--0001 00:00:00</td>
+				<td>27</td>
+			</tr>
+			<tr class="row0">
+				<td style="cursor: pointer;" onclick="checkThis(&#39;cb0&#39;);">1</td>
+				<td><input type="checkbox" id="cb0" name="cid[]" value="27"
+					onclick="isChecked(this.checked);"></td>
+				<td onclick="checkThis(&#39;cb0&#39;);"><a
+					href="http://localhost/essay.kunaviet/TEMPLATE_Admin/users/update/27">
+						abc110</a></td>
+				<td>abc110</td>
+				<td align="center"><img width="16" height="16" border="0"
+					src="./layout_files/publish_x.png" alt=""></td>
+				<td align="center"><a href="javascript:void(0);"
+					onclick="checkOrUncheck(&#39;27&#39;, &#39;published&#39;, &#39;users&#39;, &#39;ah27&#39;)">
+						<span id="ah27"> <img width="16" height="16" border="0"
+							src="./layout_files/publish_x.png" alt="Đã khóa">
+					</span>
+				</a></td>
+				<td>Register</td>
+				<td><a href="mailto:abc110@abc110.abc110"> abc110@abc110.abc110</a></td>
+				<td nowrap="nowrap">30-11--0001 00:00:00</td>
+				<td>27</td>
+			</tr>
+			<tr class="row0">
+				<td style="cursor: pointer;" onclick="checkThis(&#39;cb0&#39;);">1</td>
+				<td><input type="checkbox" id="cb0" name="cid[]" value="27"
+					onclick="isChecked(this.checked);"></td>
+				<td onclick="checkThis(&#39;cb0&#39;);"><a
+					href="http://localhost/essay.kunaviet/TEMPLATE_Admin/users/update/27">
+						abc110</a></td>
+				<td>abc110</td>
+				<td align="center"><img width="16" height="16" border="0"
+					src="./layout_files/publish_x.png" alt=""></td>
+				<td align="center"><a href="javascript:void(0);"
+					onclick="checkOrUncheck(&#39;27&#39;, &#39;published&#39;, &#39;users&#39;, &#39;ah27&#39;)">
+						<span id="ah27"> <img width="16" height="16" border="0"
+							src="./layout_files/publish_x.png" alt="Đã khóa">
+					</span>
+				</a></td>
+				<td>Register</td>
+				<td><a href="mailto:abc110@abc110.abc110"> abc110@abc110.abc110</a></td>
+				<td nowrap="nowrap">30-11--0001 00:00:00</td>
+				<td>27</td>
+			</tr>
+		</tbody>
+	</table>
+	<!-- .admin_list -->
+</div>
+<!-- #cont_body -->
