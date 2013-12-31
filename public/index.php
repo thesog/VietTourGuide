@@ -22,7 +22,8 @@ defined('APPLICATION_ENV') ||
                 /**
                  * Phân cách giữa các giá trị nếu giá trị là mảng
                  */
-                defined('VAR_BREAK') || define('VAR_BREAK', '&varbreak;');
+                //defined('VAR_BREAK') || define('VAR_BREAK', '&varbreak;');
+                defined('VAR_BREAK');
                 
                 /**
                  * Phân cách giữa các field giá trị
